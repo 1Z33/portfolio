@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Contact — Mon Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="page-section">
+    <div class="section-header">
+        <h2 class="section-title">Contactez-moi</h2>
+        <p class="section-subtitle">Une idée, un projet ? Discutons-en !</p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-form-wrapper glass-card">
+            <form method="POST" action="{{ url_for('contact') }}" class="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Votre nom" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Votre email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Votre message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Envoyer le message</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">@</div>
+                <div class="contact-details">
+                    <h4>Email</h4>
+                    <p>bastossantosbg@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">GH</div>
+                <div class="contact-details">
+                    <h4>GitHub</h4>
+                    <p><a href="https://github.com/IZ33" target="_blank">github.com/IZ33</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-details">
+                    <h4>Téléphone</h4>
+                    <p>+243 (0) 972519906</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">#</div>
+                <div class="contact-details">
+                    <h4>Localisation</h4>
+                    <p>Lubumbashi</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"></></div>
+                <div class="contact-details">
+                    <h4>Technologies</h4>
+                    <p>Python, Flask, HTML, CSS, JS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

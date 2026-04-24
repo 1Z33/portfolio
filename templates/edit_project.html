@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Modifier Projet — Mon Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="page-section">
+    <div class="section-header">
+        <h2 class="section-title">Modifier le projet</h2>
+        <p class="section-subtitle">Mettez à jour vos informations</p>
+    </div>
+
+    <div class="form-container glass-card">
+        <form method="POST" class="contact-form" style="max-width:600px; margin:0 auto;">
+            <div class="form-group">
+                <input type="text" name="title" value="{{ project.title }}" placeholder="Nom du projet *" required>
+            </div>
+            <div class="form-group">
+                <textarea name="description" placeholder="Description du projet *" required>{{ project.description }}</textarea>
+            </div>
+            <div class="form-group">
+                <input type="text" name="technologies" value="{{ project.technologies or '' }}" placeholder="Technologies utilisées (ex: Python, Flask, SQLite)">
+            </div>
+            <div class="form-group">
+                <input type="url" name="github_link" value="{{ project.github_link or '' }}" placeholder="Lien GitHub (https://github.com/...)">
+            </div>
+            <div class="form-group">
+                <input type="url" name="image_url" value="{{ project.image_url or '' }}" placeholder="URL de l'image du projet (optionnel)">
+            </div>
+            <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+                <button type="submit" class="submit-btn">Enregistrer les modifications</button>
+                <a href="/projects" class="submit-btn" style="text-decoration:none; display:inline-flex; align-items:center;">Annuler</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+

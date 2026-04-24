@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Messages Reçus — Mon Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="page-section">
+    <div class="section-header">
+        <h2 class="section-title">Messages reçus</h2>
+        <p class="section-subtitle">Vos contacts récents</p>
+    </div>
+
+    {% if messages %}
+        <div class="messages-grid">
+            {% for msg in messages %}
+                <div class="glass-card message-card">
+                    <div class="message-header">
+                        <div class="message-avatar">
+                            {{ msg.name[0]|upper }}
+                        </div>
+                        <div class="message-meta">
+                            <h3>{{ msg.name }}</h3>
+                            <p>{{ msg.email }}</p>
+                            {% if msg.created_at %}
+                                <p class="message-date">📅 {{ msg.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="message-body">
+                        <p>{{ msg.message }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state glass-card">
+            <p>Aucun message reçu pour le moment.</p>
+            <a href="/contact" class="submit-btn" style="margin-top:20px; display:inline-block;">Envoyer un message de test</a>
+        </div>
+    {% endif %}
+</section>
+
+{% endblock %}
+

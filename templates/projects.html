@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Mes Projets — Mon Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="page-section">
+    <div class="section-header">
+        <h2 class="section-title">Mes Projets</h2>
+        <p class="section-subtitle">Découvrez mes réalisations</p>
+    </div>
+
+    <div class="page-actions">
+        <a href="/add_project" class="submit-btn">+ Ajouter un projet</a>
+    </div>
+
+    {% if projects %}
+        <div class="projects-grid">
+            {% for project in projects %}
+                <div class="glass-card project-card">
+                    {% if project.image_url %}
+                        <div class="project-image">
+                            <img src="{{ project.image_url }}" alt="{{ project.title }}">
+                        </div>
+                    {% endif %}
+                    <div class="project-content">
+                        <h3 class="project-title">{{ project.title }}</h3>
+                        {% if project.technologies %}
+                            <div class="tech-badges">
+                                {% for tech in project.technologies.split(',') %}
+                                    <span class="tech-badge">{{ tech.strip() }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <p class="description-text">{{ project.description }}</p>
+                        {% if project.github_link %}
+                            <a href="{{ project.github_link }}" target="_blank" class="github-link">
+                                <span>🐙 Voir sur GitHub</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="admin-actions">
+                        <a href="/edit_project/{{ project.id }}" class="action-btn btn-edit">Modifier</a>
+                        <a href="/delete_project/{{ project.id }}" class="action-btn btn-delete" onclick="return confirm('Supprimer ce projet ?')">Supprimer</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state glass-card">
+            <p>Aucun projet pour le moment.</p>
+            <a href="/add_project" class="submit-btn" style="margin-top:20px; display:inline-block;">Créer mon premier projet</a>
+        </div>
+    {% endif %}
+</section>
+
+{% endblock %}
+

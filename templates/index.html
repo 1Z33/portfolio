@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil — Mon Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="hero-section">
+    <div class="header">
+        <div class="logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="url(#grad1)" stroke-width="2" fill="rgba(0,240,255,0.05)"/>
+                <path d="M30 50 L45 35 L45 45 L70 45 L70 55 L45 55 L45 65 Z" fill="url(#grad1)"/>
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00f0ff"/>
+                        <stop offset="100%" style="stop-color:#ff00d4"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <h1 class="brand-name">Portfolio</h1>
+        <p class="tagline">Développeur Web & Créateur Digital</p>
+    </div>
+
+    <div class="intro-subtext" style="text-align:center; max-width:600px; margin:0 auto 40px;">
+        <p>Je suis développeur web passionné par Python, l'IA et le développement d'applications modernes. Bienvenue dans mon univers créatif.</p>
+    </div>
+
+    <div class="menu-grid">
+        <a href="/projects" class="menu-item visible">
+            <div class="menu-badge">01</div>
+            <span class="menu-title">Projets</span>
+        </a>
+        <a href="/contact" class="menu-item visible">
+            <div class="menu-badge">02</div>
+            <span class="menu-title">Contact</span>
+        </a>
+        <a href="/messages" class="menu-item visible">
+            <div class="menu-badge">03</div>
+            <span class="menu-title">Messages</span>
+        </a>
+    </div>
+
+    <div class="intro-metrics" style="max-width:700px; margin: 50px auto;">
+        <div class="metric-item">
+            <span class="metric-value">5</span><span class="metric-suffix">+</span>
+            <span class="metric-label">Compétences</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+            <span class="metric-value">3</span><span class="metric-suffix">+</span>
+            <span class="metric-label">Projets</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+            <span class="metric-value">100</span><span class="metric-suffix">%</span>
+            <span class="metric-label">Passion</span>
+        </div>
+    </div>
+
+    <div class="intro-values">
+        <div class="value-card">
+            <div class="value-number">01</div>
+            <h3>Python</h3>
+            <p>Développement backend, automatisation et scripts performants.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-number">02</div>
+            <h3>Flask</h3>
+            <p>Applications web légères, API REST et microservices.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-number">03</div>
+            <h3>IA & Data</h3>
+            <p>Intégration de modèles d'intelligence artificielle et analyse de données.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
