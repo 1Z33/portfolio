@@ -27,7 +27,7 @@
                         <h3 class="project-title">{{ project.title }}</h3>
                         {% if project.technologies %}
                             <div class="tech-badges">
-                                {% for tech in project.technologies.split(',') %}
+                                {% for tech in project.technologies.split(',') if tech.strip() %}
                                     <span class="tech-badge">{{ tech.strip() }}</span>
                                 {% endfor %}
                             </div>
@@ -55,4 +55,3 @@
 </section>
 
 {% endblock %}
-
