@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
 
@@ -39,7 +39,7 @@ def home():
 # AFFICHER PROJETS
 @app.route('/projects')
 def projects():
-    projects = db.session.execute(db.select(Project)).scalars().all()
+    projects = Project.query.all()
     return render_template('projects.html', projects=projects)
 
 
@@ -77,7 +77,9 @@ def add_project():
 # MODIFIER PROJET
 @app.route('/edit_project/<int:id>', methods=['GET', 'POST'])
 def edit_project(id):
-    project = db.get_or_404(Project, id)
+    project = db.session.get(Project, id)
+    if not project:
+        abort(404)
 
     if request.method == 'POST':
         project.title = request.form['title']
@@ -97,7 +99,9 @@ def edit_project(id):
 # SUPPRIMER PROJET
 @app.route('/delete_project/<int:id>')
 def delete_project(id):
-    project = db.get_or_404(Project, id)
+    project = db.session.get(Project, id)
+    if not project:
+        abort(404)
 
     db.session.delete(project)
     db.session.commit()
@@ -137,7 +141,7 @@ def contact():
 # AFFICHER MESSAGES
 @app.route('/messages')
 def messages():
-    messages = db.session.execute(db.select(Contact)).scalars().all()
+    messages = Contact.query.all()
     return render_template('messages.html', messages=messages)
 
 
